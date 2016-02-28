@@ -1,0 +1,26 @@
+_repo: Religious-Reality-A-Book-for-Men_5954
+creator:
+  author:
+    agent_name: Rawlinson, A. E. J. (Alfred Edward John)
+    aliases:
+    - Rawlinson, Alfred Edward John
+    - Rawlinson, John
+    birthdate: 1884
+    deathdate: 1960
+    gutenberg_agent_id: '1899'
+    url: http://www.gutenberg.org/2009/agents/1899
+    wikipedia: http://en.wikipedia.org/wiki/Alfred_Edward_John_Rawlinson
+description: ''
+gutenberg_issued: '2004-06-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '5954'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Theology, Doctrinal -- Popular works'
+- !lcc 'BT'
+title: 'Religious Reality: A Book for Men'
+url: http://www.gutenberg.org/ebooks/5954
