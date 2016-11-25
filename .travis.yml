@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: TWlE/XOkJ8eXtEq/a+3quIHRiq+S1Gxt/G0DMdiCRNttkGWzb3UVGdb4Q9BfyqYqFuUPGI5v55GzXmD5OIjuFMfvud/QJUwq4Dkzg5UpboBOO6ysFBJwSOqtT83oIXzktRg4QjBWqKgTu8SqTz6Bzw5kUiHUznkIFQZRGFKd34dmqc3WdZnFlCKxBuCToTdlS0i4GN3TMx3pa92WyiBnScFaHrNXSzn9CKXtiZI7m5FandrhV2q1bxkgoonDadL1O/+SYM9Ix4YJkIQJt5h76IY319cC85xNo9h7a3xV2TbSM/BOoBoMGYI7BiMi2qmopNthkducwWEXyL/viseQbHsqlfhHGGX2jQZtmtpVFIZ4DilKepsu10+WjVEFggvRHxnPgwX+6zaO1a8uEZ3ZoDDgyszn0td4Zt0hwh/f2u1HXb4bGQS81Nz2W1xs+zg7saf/xIy9mlQyLpBvRFANpbA1ivZtx7mDBpSaQXJHlzD/GTo7LRdpmk6YjplGi6sETuL+OlUkfg6LQYvvhzpDDREVxDnLoX6Z+F/YW9k6OKE972brb9gFudY8Caqufam/3oiGchWWlE280kyv/0Oi5gflNOP/UXYr9hjLDROTryy3EIpkZWlXx33qm1ekBNTRWv8bjy5OEa4sXr1y2WWnn0xnI9Zn4GThXKHWPhmWmO8=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Religious-Reality-A-Book-for-Men_5954
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
