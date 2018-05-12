@@ -1,5 +1,8 @@
 _repo: Religious-Reality-A-Book-for-Men_5954
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Rawlinson, A. E. J. (Alfred Edward John)
@@ -12,6 +15,8 @@ creator:
     url: http://www.gutenberg.org/2009/agents/1899
     wikipedia: http://en.wikipedia.org/wiki/Alfred_Edward_John_Rawlinson
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/5954#Religious-Reality-A-Book-for-Men
 gutenberg_issued: '2004-06-01'
 gutenberg_type: Text
 identifiers:
